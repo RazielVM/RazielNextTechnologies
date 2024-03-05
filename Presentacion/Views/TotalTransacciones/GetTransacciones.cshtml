@@ -1,0 +1,40 @@
+﻿@model Modelo.Transaccion
+@{
+    ViewData["Title"] = "GetTransacciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Monto Total Transaccionado</h1>
+
+@if (Model == null)
+{
+    <div class="alert alert-danger" role="alert">
+        Error! la lista esta vacia!
+    </div>
+}
+else
+{
+    <div class="table-responsive container-fluid mt-5">
+        <table class="table table-dark table-striped text-center" id="tabla">
+            <thead>
+                <tr>
+                    <th>IdCompany</th>
+                    <th>Company Name</th>
+                    <th>Transaction Date</th>
+                    <th>Total Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Modelo.Transaccion transaccion in Model.Transacciones)
+                {
+                    <tr>
+                        <td>@transaccion.Id_Company</td>
+                        <td>@transaccion.Company_Name</td>
+                        <td>@transaccion.Transaction_Date</td>
+                        <td>@transaccion.Total_Amount</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

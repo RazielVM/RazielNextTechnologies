@@ -1,0 +1,40 @@
+﻿@model Dictionary<string, object>
+
+@{
+    ViewData["Title"] = "CalcularNumero";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1 style="font-family: 'Times New Roman'" class="text-center">CalcularNumero</h1>
+    <hr />
+
+    <form method="post" asp-action="CalcularNumero" asp-controller="NumeroFaltante">
+        <div class="row m-4">
+            <div class="mb-3 col-md-4">
+                <label for="numeroInput" class="form-label">Escriba un número del 1 al 100...</label>
+                <input type="number" class="form-control" id="numeroInput" name="numero" placeholder="Ej: 56" min="1" max="100">
+            </div>
+            @if (Model != null)
+            {
+                <div class="col-md-4 ms-auto">
+                    <label for="numeroExtraido" class="form-label">El número extraido fue...</label>
+                    <input class="form-control" type="number" id="numeroExtraido" name="numeroExtraido" value="@Model["numeroFaltante"]" aria-label="Número extraído" disabled readonly>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-4 ms-auto">
+                    <label for="numeroExtraido" class="form-label">El número extraido fue...</label>
+                    <input class="form-control" type="number" id="numeroExtraido" name="numeroExtraido" aria-label="Número extraído" disabled readonly>
+                </div>
+            }
+
+        </div>
+
+        <div class="d-grid gap-2 align-items-center justify-content-center">
+            <button type="submit" class="btn btn-success">Extraer número</button>
+            <br />
+        </div>
+    </form>
+</div>
